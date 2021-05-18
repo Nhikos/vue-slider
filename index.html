@@ -26,6 +26,7 @@
                 <div class="nav">
                     <i v-for="(image, index) in images"
                        :class="(index == imageIndex) ? 'active' : '' "
+                       @click="imageIndex = index"
                        class="fas fa-circle" ></i>
                 </div>
             </div>
