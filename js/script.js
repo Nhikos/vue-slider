@@ -1,3 +1,6 @@
+//1# Gestire il cambio dell'immagine al click sui pallini in basso (nav);
+//2# Applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente.
+
 var app = new Vue(
     {
         el: "#root",
@@ -10,21 +13,43 @@ var app = new Vue(
 
             "https://static.educalingo.com/img/en/800/landscape.jpg"
             ],
-            imageIndex: 0
+            imageIndex: 0,
+
         },
-        methods: {
-            nextImage: function() {
+
+        mounted: function() {
+            this.playImage ()
+            },
+
+        methods: 
+        {
+            nextImage: function() 
+            {
                 this.imageIndex++;
-                if (this.imageIndex == this.images.length) {
+                if (this.imageIndex == this.images.length) 
+                {
                     this.imageIndex = 0;
                 }
-
             },
-            prevImage: function() {
+            
+            prevImage: function() 
+            {
                 this.imageIndex--;
-                if (this.imageIndex == -1) {
+                if (this.imageIndex == -1)
+                {
                     this.imageIndex = this.images.length -1;
                 }
+            },
+
+            playImage: function()
+            {
+                let self = this;
+                setInterval(function()
+                {
+                    self.nextImage();
+                    console.log("setInterval");
+                }, 3000);
+                console.log("playImage");
             }
         }
     }
